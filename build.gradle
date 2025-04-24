@@ -1,0 +1,43 @@
+plugins {
+    id("java")
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+}
+
+group = "me.deeent"
+version = "3.4"
+
+repositories {
+    mavenCentral()
+
+    maven { url 'https://repo.codemc.io/repository/nms/' }
+    maven { url 'https://oss.sonatype.org/content/groups/public' }
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+}
+
+dependencies {
+    compileOnly("net.md-5:bungeecord-api:1.19-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT")
+    compileOnly("net.luckperms:api:5.4")
+    compileOnly("me.clip:placeholderapi:2.11.3")
+    compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
+        exclude group: 'org.bukkit', module: 'bukkit'
+    }
+
+    implementation("com.tchristofferson:ConfigUpdater:2.1-SNAPSHOT")
+    implementation("club.minnced:discord-webhooks:0.8.4")
+
+    compileOnly("org.projectlombok:lombok:1.18.28")
+    annotationProcessor("org.projectlombok:lombok:1.18.28")
+}
+
+shadowJar {
+    minimize()
+    archiveClassifier = ''
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

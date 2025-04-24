@@ -1,0 +1,97 @@
+#     StaffMonitor - v3.0
+#       - By: Deeent -
+
+# WebHook url.
+# Leave it on "none" to disable it.
+webhook: none
+
+# Storage Configuration (MYSQL, SQLITE)
+storage:
+  mysql: false
+  host: localhost
+  port: 3306
+  database: activity-db
+  username: username
+  password: pass
+
+# The permission to be granted to monitored staffs.
+staff-permission: monitor.staff
+
+# The embeds to be sent accordingly.
+embeds-enabled:
+  join: true
+  leave: true
+  command: true
+
+# The list of commands that will be alerted when a staff executes them.
+# Only works if in "embeds-enabled.command" is true.
+forbidden-commands:
+  - op
+  - /set 0
+
+# The format for dates (28 November 2018 09:01)
+format-date: <t:%time%>
+
+# The format that the formatted times will have.
+format-time:
+  days: d
+  hours: h
+  minutes: m
+  seconds: s
+
+embeds:
+  join:
+    description: "## :inbox_tray: %player% has join the server. ##"
+    color: "#36cc31"
+    thumbnail: "https://mineskin.eu/headhelm/%player%/128.png"
+    footer:
+      text: "Staff Monitor"
+      icon: "https://www.spigotmc.org/data/resource_icons/86/86433.jpg"
+    fields:
+      1:
+        name: ":man_police_officer: Rank"
+        value: "%rank%"
+      2:
+        name: ":date: Join date"
+        value: "%join%"
+        in-line: true
+      3:
+        name: ":clock: All activity"
+        value: "%activity%"
+        in-line: true
+  leave:
+    description: "## :mushroom: %player% has join the server. ##"
+    color: "#36cc31"
+    thumbnail: "https://mineskin.eu/headhelm/%player%/128.png"
+    footer:
+      text: "Staff Monitor"
+      icon: "https://www.spigotmc.org/data/resource_icons/86/86433.jpg"
+    fields:
+      1:
+        name: ":man_police_officer: Rank"
+        value: "%rank%"
+      2:
+        name: ":date: Join date"
+        value: "%join%"
+        in-line: true
+      3:
+        name: ":date: Leave date"
+        value: "%leave%"
+        in-line: true
+      4:
+        name: ":alarm_clock: Time played"
+        value: "%played%"
+  command:
+    description: "## :warning: %player% executed a forbidden command. ## \n\n- %command%"
+    color: "#edba2d"
+    thumbnail: "https://mineskin.eu/headhelm/%player%/128.png"
+    footer:
+      text: "Staff Monitor"
+      icon: "https://www.spigotmc.org/data/resource_icons/86/86433.jpg"
+    fields:
+      1:
+        name: ":man_police_officer: Rank"
+        value: "%rank%"
+      2:
+        name: ":map: Site"
+        value: "%site%"

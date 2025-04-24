@@ -1,0 +1,7 @@
+name: StaffMonitor
+main: me.deeent.staffmonitor.spigot.SpigotStaff
+version: 3.4
+softdepend:
+  - Vault
+  - LuckPerms
+  - PlaceholderAPI

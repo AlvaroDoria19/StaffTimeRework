@@ -1,0 +1,4 @@
+name: StaffMonitor
+main: me.deeent.staffmonitor.bungeecord.BungeeStaff
+version: 3.4
+softDepends: ["LuckPerms"]
